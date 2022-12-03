@@ -3,15 +3,52 @@
 }
 
 input,
+textarea,
+select {
+    &:-webkit-autofill {
+        -webkit-text-fill-color: #303030 !important;
+        -webkit-box-shadow: 0 0 0 30px #f5f5f5 inset !important;
+
+        &:hover,
+        &:focus {
+            -webkit-text-fill-color: #303030 !important;
+        }
+    }
+}
+
+.mat-mdc-form-field {
+    &:hover {
+        input,
+        textarea,
+        select {
+            &:-webkit-autofill {
+                -webkit-box-shadow: 0 0 0 30px #ececec inset !important;
+            }
+        }
+    }
+
+    &.mat-focused {
+        input,
+        textarea,
+        select {
+            &:-webkit-autofill {
+                -webkit-box-shadow: 0 0 0 30px #dcdcdc inset !important;
+            }
+        }
+    }
+}
+
+body.dark-mode {
+    input,
     textarea,
     select {
         &:-webkit-autofill {
-            -webkit-text-fill-color: #303030 !important;
-            -webkit-box-shadow: 0 0 0 30px #f5f5f5 inset !important;
+            -webkit-text-fill-color: #f0f0f0 !important;
+            -webkit-box-shadow: 0 0 0 30px #4a4a4a inset !important;
 
             &:hover,
             &:focus {
-                -webkit-text-fill-color: #303030 !important;
+                -webkit-text-fill-color: #f0f0f0 !important;
             }
         }
     }
@@ -22,7 +59,7 @@ input,
             textarea,
             select {
                 &:-webkit-autofill {
-                    -webkit-box-shadow: 0 0 0 30px #ececec inset !important;
+                    -webkit-box-shadow: 0 0 0 30px #565656 inset !important;
                 }
             }
         }
@@ -32,11 +69,12 @@ input,
             textarea,
             select {
                 &:-webkit-autofill {
-                    -webkit-box-shadow: 0 0 0 30px #dcdcdc inset !important;
+                    -webkit-box-shadow: 0 0 0 30px #707070 inset !important;
                 }
             }
         }
     }
+}
 
 @media (prefers-color-scheme: dark) {
     input,

@@ -11,6 +11,9 @@ import { SecurityModule } from './security/security.module';
 // Routes
 import { AppRoutingModule } from './app-routing.module';
 
+// Services
+import { ThemeService } from './services/theme.service';
+
 // Pages
 import { AppComponent } from './app.component';
 import { DashboardPageComponent } from './pages/dashboard-page/dashboard-page.component';
@@ -18,13 +21,17 @@ import { LoginPageComponent } from './pages/login-page/login-page.component';
 
 // Components
 import { ExternalPageTemplateComponent } from './components/templates/external-page-template/external-page-template.component';
+import { InternalPageTemplateComponent } from './components/templates/internal-page-template/internal-page-template.component';
 
 @NgModule({
     declarations: [
         AppComponent,
+        
+        ExternalPageTemplateComponent,
+        InternalPageTemplateComponent,
+        
         DashboardPageComponent,
         LoginPageComponent,
-        ExternalPageTemplateComponent
     ],
     imports: [
         BrowserModule,
@@ -38,7 +45,7 @@ import { ExternalPageTemplateComponent } from './components/templates/external-p
 
         AppRoutingModule,
     ],
-    providers: [],
+    providers: [ThemeService],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

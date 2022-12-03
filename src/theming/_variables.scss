@@ -80,6 +80,11 @@ $dark-theme: mat.define-dark-theme(
 // emit any typography styles.
 @include mat.all-component-themes($light-theme);
 
+body.dark-mode {
+    @include mat.core-theme($dark-theme);
+    @include mat.all-component-themes($dark-theme);
+}
+
 @media (prefers-color-scheme: dark) {
     // Use the `-color` mixins to only apply color styles without reapplying the same
     // typography and density styles.

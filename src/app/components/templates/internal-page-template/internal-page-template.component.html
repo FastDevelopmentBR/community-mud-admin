@@ -1,0 +1,28 @@
+<mat-toolbar color="primary">
+    <button mat-icon-button
+            class="menu-icon"
+            aria-label="icon-button with menu icon">
+        <mat-icon>menu</mat-icon>
+    </button>
+
+    <span>CommunityMUD</span>
+    <span class="toolbar-spacer"></span>
+
+    <button mat-icon-button
+            class="dark-mode-icon"
+            aria-label="icon-button with preferred color scheme mode icon"
+            (click)="toggleColorScheme()"
+            [title]="(isDarkMode) ? 'Desativar Dark Mode' : 'Ativar Dark Mode'">
+        <mat-icon>{{ (isDarkMode) ? 'light_mode' : 'dark_mode' }}</mat-icon>
+    </button>
+
+    <button mat-icon-button
+            class="share-icon"
+            aria-label="icon-button with share icon">
+        <mat-icon>share</mat-icon>
+    </button>
+</mat-toolbar>
+
+<div class="container">
+    <ng-content></ng-content>
+</div>
