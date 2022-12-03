@@ -1,7 +1,16 @@
 @use "sass:map";
 @use "@angular/material" as mat;
 
-@include mat.core();
+// TODO(v15): As of v15 mat.legacy-core no longer includes default typography styles.
+//  The following line adds:
+//    1. Default typography styles for all components
+//    2. Styles for typography hierarchy classes (e.g. .mat-headline-1)
+//  If you specify typography styles for the components you use elsewhere, you should delete this line.
+//  If you don't need the default component typographies but still want the hierarchy styles,
+//  you can delete this line and instead use:
+//    `@include mat.legacy-typography-hierarchy(mat.define-legacy-typography-config());`
+@include mat.all-legacy-component-typographies();
+@include mat.legacy-core();
 
 // https://material.angular.io/guide/duplicate-theming-styles#disabling-duplication-warnings
 mat.$theme-ignore-duplication-warnings: true;
@@ -97,22 +106,22 @@ $dark-theme: mat.define-dark-theme(
             accent: $accent-palette,
         ),
         // Only include `typography` and `density` in the default dark theme.
-        typography: mat.define-typography-config(),
+        typography: mat.define-legacy-typography-config(),
         density: 0,
     )
 );
 
 // Emit theme-dependent styles for common features used across multiple components.
-@include mat.core-color($light-theme);
+@include mat.legacy-core-color($light-theme);
 
 // Emit styles for MatButton based on `$my-theme`. Because the configuration
 // passed to `define-light-theme` omits typography, `button-theme` will not
 // emit any typography styles.
-@include mat.all-component-themes($light-theme);
+@include mat.all-legacy-component-themes($light-theme);
 
 @media (prefers-color-scheme: dark) {
     // Use the `-color` mixins to only apply color styles without reapplying the same
     // typography and density styles.
-    @include mat.core-theme($dark-theme);
-    @include mat.all-component-themes($dark-theme);
+    @include mat.legacy-core-theme($dark-theme);
+    @include mat.all-legacy-component-themes($dark-theme);
 }

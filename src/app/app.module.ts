@@ -6,7 +6,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 // Imported Custom Modules
 import { MaterialAngularModule } from './material-angular/material-angular.module';
-import { SecurityModule } from './security/Security.module';
+import { SecurityModule } from './security/security.module';
 
 // Routes
 import { AppRoutingModule } from './app-routing.module';
