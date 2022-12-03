@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {
-    FormBuilder,
-    FormGroup,
+    UntypedFormBuilder,
+    UntypedFormGroup,
     Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -16,13 +16,13 @@ import { AuthService } from '../../security/auth.service';
     styleUrls: ['./login-page.component.scss']
 })
 export class LoginPageComponent implements OnInit {
-    loginForm: FormGroup;
+    loginForm: UntypedFormGroup;
     submitted = false;
 
     hidePassword: boolean = true;
 
     constructor(
-        private fb: FormBuilder,
+        private fb: UntypedFormBuilder,
         private snackBar: MatSnackBar,
         private authService: AuthService,
         private router: Router
