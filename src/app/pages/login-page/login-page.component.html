@@ -1,0 +1,77 @@
+<commud-external-page-template>
+    <form [formGroup]="loginForm"
+          (submit)="onSubmit()">
+        <mat-form-field>
+            <mat-label>E-mail</mat-label>
+            <input matInput
+                   type="email"
+                   id="email"
+                   formControlName="email"
+                   placeholder="contato@communitymud.com.br"
+                   autofocus
+                   required
+                   autocomplete="off" />
+
+            <mat-error *ngIf="email?.invalid && (email?.dirty || email?.touched)">
+                <ng-container *ngIf="email?.errors?.['required']">
+                    Preenchimento obrigatório.
+                </ng-container>
+                <ng-container *ngIf="email?.errors?.['email']">
+                    E-mail inválido.
+                </ng-container>
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Senha</mat-label>
+            <input matInput
+                   [type]="hidePassword ? 'password' : 'text'"
+                   formControlName="password"
+                   placeholder="******" />
+            <button mat-icon-button
+                    matSuffix
+                    type="button"
+                    (click)="hidePassword = !hidePassword"
+                    [attr.aria-label]="'Hide password'"
+                    [attr.aria-pressed]="hidePassword">
+                <mat-icon>{{
+                    hidePassword ? "visibility_off" : "visibility"
+                    }}</mat-icon>
+            </button>
+
+            <mat-error *ngIf="password?.invalid && (password?.dirty || password?.touched)">
+                <ng-container *ngIf="password?.errors?.['required']">
+                    Preenchimento obrigatório.
+                </ng-container>
+                <ng-container *ngIf="password?.errors?.['minlength']">
+                    O campo deve possuir no mínimo {{ password?.errors?.['minlength'].requiredLength }} caracteres.
+                </ng-container>
+            </mat-error>
+        </mat-form-field>
+
+        <button type="submit"
+                mat-raised-button
+                color="primary"
+                [disabled]="loginForm.invalid || submitted">
+            Login
+        </button>
+
+        <a mat-button
+           class="forgot-password"
+           type="button"
+           [routerLink]="['/esqueci-a-senha']">Esqueci minha senha</a>
+
+        <button mat-button>Basic</button>
+        <button mat-button
+                color="primary">Primary</button>
+        <button mat-button
+                color="accent">Accent</button>
+        <button mat-button
+                color="warn">Warn</button>
+        <button mat-button
+                disabled>Disabled</button>
+        <a mat-button
+           href="https://www.google.com/"
+           target="_blank">Link</a>
+    </form>
+</commud-external-page-template>
