@@ -1,6 +1,8 @@
-import { Component, HostBinding, Inject, OnInit, Renderer2 } from '@angular/core';
-import { DOCUMENT } from '@angular/common';
-import { ThemeService } from 'src/app/services/theme.service';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
+import { ThemeService } from '../../../services/theme.service';
+import { AuthService } from '../../../security/auth.service';
 
 @Component({
     selector: 'commud-internal-page-template',
@@ -10,7 +12,9 @@ import { ThemeService } from 'src/app/services/theme.service';
 export class InternalPageTemplateComponent implements OnInit {
     isDarkMode: boolean = false;
 
-    constructor(private themeService: ThemeService) { }
+    constructor(private router: Router,
+        private authService: AuthService,
+        private themeService: ThemeService) { }
 
     ngOnInit(): void {
         this.isDarkMode = this.themeService.isDarkMode();
@@ -22,5 +26,10 @@ export class InternalPageTemplateComponent implements OnInit {
             : this.themeService.update('dark-mode');
 
         this.isDarkMode = this.themeService.isDarkMode();
+    }
+
+    logout() {
+        this.authService.logout()
+        this.router.navigate(['/login'])
     }
 }

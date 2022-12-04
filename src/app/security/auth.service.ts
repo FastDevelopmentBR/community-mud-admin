@@ -11,19 +11,16 @@ export class AuthService {
     logged: boolean = false
     constructor(private http: HttpClient) { }
 
-    public isLoggedIn(): boolean {
+    isLoggedIn(): boolean {
         return this.logged;
-    }
-
-    isLoggedOut(): boolean {
-        return !this.isLoggedIn();
     }
 
     public login(email: string, password: string): Observable<any> {
         return this.http.post(environment.api + '/login', { email, password })
     }
 
-    logout(): void {
+    logout(): boolean {
         this.logged = false
+        return true
     }
 }
