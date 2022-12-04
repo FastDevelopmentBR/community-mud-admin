@@ -6,9 +6,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 // Imported Custom Modules
 import { MaterialAngularModule } from './material-angular/material-angular.module';
 
-// Services
-import { ThemeService } from './services/theme.service';
-
 // Components
 import { ExternalPageTemplateComponent } from './templates/external-page-template/external-page-template.component';
 import { InternalPageTemplateComponent } from './templates/internal-page-template/internal-page-template.component';
@@ -36,8 +33,6 @@ import { InternalPageTemplateComponent } from './templates/internal-page-templat
 
         ExternalPageTemplateComponent,
         InternalPageTemplateComponent
-    ],
-    providers: [ThemeService],
-    bootstrap: []
+    ]
 })
 export class SharedModule { }

@@ -8,6 +8,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from './shared/shared.module';
 import { SecurityModule } from './security/security.module';
 
+// Services
+import { ThemeService } from './services/theme.service';
+
 // Routes
 import { AppRoutingModule } from './app-routing.module';
 
@@ -32,7 +35,7 @@ import { LoginPageComponent } from './pages/login-page/login-page.component';
 
         AppRoutingModule,
     ],
-    providers: [],
+    providers: [ThemeService],
     bootstrap: [AppComponent]
 })
 export class AppModule { }
