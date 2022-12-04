@@ -5,30 +5,20 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 // Imported Custom Modules
-import { MaterialAngularModule } from './material-angular/material-angular.module';
+import { SharedModule } from './shared/shared.module';
 import { SecurityModule } from './security/security.module';
 
 // Routes
 import { AppRoutingModule } from './app-routing.module';
-
-// Services
-import { ThemeService } from './services/theme.service';
 
 // Pages
 import { AppComponent } from './app.component';
 import { DashboardPageComponent } from './pages/dashboard-page/dashboard-page.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 
-// Components
-import { ExternalPageTemplateComponent } from './components/templates/external-page-template/external-page-template.component';
-import { InternalPageTemplateComponent } from './components/templates/internal-page-template/internal-page-template.component';
-
 @NgModule({
     declarations: [
         AppComponent,
-        
-        ExternalPageTemplateComponent,
-        InternalPageTemplateComponent,
         
         DashboardPageComponent,
         LoginPageComponent,
@@ -36,16 +26,13 @@ import { InternalPageTemplateComponent } from './components/templates/internal-p
     imports: [
         BrowserModule,
         BrowserAnimationsModule,
-        HttpClientModule,
-        FormsModule,
-        ReactiveFormsModule,
-
-        MaterialAngularModule,
+        
+        SharedModule,
         SecurityModule,
 
         AppRoutingModule,
     ],
-    providers: [ThemeService],
+    providers: [],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

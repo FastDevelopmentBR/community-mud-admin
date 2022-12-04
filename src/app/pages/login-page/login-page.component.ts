@@ -60,7 +60,6 @@ export class LoginPageComponent implements OnInit {
                     });
             }
         } catch (error: any) {
-            console.log('aqui')
             this.submitted = false
             this.snackBar.open(error.message ? error.message : error.toString());
         }
