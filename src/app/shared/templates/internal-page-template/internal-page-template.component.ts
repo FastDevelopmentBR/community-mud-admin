@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Location } from '@angular/common';
 import { Router } from '@angular/router';
 
 import { ThemeService } from '../../../services/theme.service';
@@ -10,14 +11,22 @@ import { AuthService } from '../../../security/auth.service';
     styleUrls: ['./internal-page-template.component.scss']
 })
 export class InternalPageTemplateComponent implements OnInit {
+    @Input() pageTitle: string | undefined
+    @Input() showBackButton: boolean = false
     isDarkMode: boolean = false;
 
-    constructor(private router: Router,
+    constructor(
+        private location: Location,
+        private router: Router,
         private authService: AuthService,
         private themeService: ThemeService) { }
 
     ngOnInit(): void {
         this.isDarkMode = this.themeService.isDarkMode();
+    }
+
+    back() {
+        this.location.back()
     }
 
     toggleColorScheme() {

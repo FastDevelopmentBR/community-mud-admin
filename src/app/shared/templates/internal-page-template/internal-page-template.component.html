@@ -25,5 +25,22 @@
 </mat-toolbar>
 
 <div class="container">
-    <ng-content></ng-content>
+    <div class="header-bar mat-elevation-z2">
+        <div class="title-w-backbtn">
+            <a mat-icon-button
+               color="primary"
+               [style.visibility]="(showBackButton) ? 'visible' : 'hidden'"
+               (click)="back()"
+               aria-label="icon button with a arrow back icon">
+                <mat-icon>arrow_back</mat-icon>
+            </a>
+            <h1 *ngIf="pageTitle">{{ pageTitle }}</h1>
+        </div>
+
+        <ng-content select="[header]"></ng-content>
+    </div>
+
+    <div class="content scroll-y">
+        <ng-content select="[content]"></ng-content>
+    </div>
 </div>
