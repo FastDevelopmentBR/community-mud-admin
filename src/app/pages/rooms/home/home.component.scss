@@ -1,0 +1,46 @@
+mat-form-field.searh-input {
+    flex: auto;
+    margin: 0 20px;
+}
+
+.mat-column-position {
+    width: 32px;
+    border-right: 1px solid currentColor;
+    text-align: center;
+}
+
+.mat-column-expand {
+    width: 224px;
+    text-align: center;
+}
+
+table {
+    width: 100%;
+}
+
+tr.details-row {
+    height: 0 !important;
+}
+
+tr.element-row.expanded-row {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.element-row td {
+    border-bottom-width: 0;
+}
+
+.element-details {
+    overflow: hidden;
+    display: flex;
+}
+
+.element-description {
+    padding: 16px;
+}
+
+.info-message {
+    text-align: center;
+    padding: 14px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+}

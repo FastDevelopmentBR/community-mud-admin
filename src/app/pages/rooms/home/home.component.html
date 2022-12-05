@@ -1,0 +1,141 @@
+<commud-internal-page-template pageTitle="Salas"
+                               [showBackButton]="true">
+    <ng-container header>
+        <mat-form-field class="searh-input">
+            <mat-label>Pesquisar</mat-label>
+
+            <input matInput
+                   [formControl]="search"
+                   type="search"
+                   id="search"
+                   placeholder="Informe o termo que deseja pesquisar..." />
+
+            <button *ngIf="search"
+                    matSuffix
+                    type="button"
+                    mat-icon-button
+                    aria-label="Clear"
+                    (click)="this.search.setValue('')">
+                <mat-icon>close</mat-icon>
+            </button>
+
+            <button matSuffix
+                    type="submit"
+                    mat-icon-button
+                    aria-label="Search">
+                <mat-icon>{{ searchLoading ? "downloading" : "search" }}</mat-icon>
+            </button>
+        </mat-form-field>
+
+        <a mat-flat-button
+           color="primary"
+           [routerLink]="['add']"
+           aria-label="add room button">
+            Adicionar
+        </a>
+    </ng-container>
+
+    <ng-container content>
+        <ng-container [ngTemplateOutlet]="itemsTable"></ng-container>
+        <mat-paginator aria-label="Select page of elements"></mat-paginator>
+    </ng-container>
+</commud-internal-page-template>
+
+<ng-template #itemsTable>
+    <table mat-table
+           [dataSource]="dataSource"
+           multiTemplateDataRows
+           matSort
+           (matSortChange)="announceSortChange($event)"
+           class="mat-elevation-z8">
+
+        <ng-container matColumnDef="{{ column }}"
+                      *ngFor="let column of columnsToDisplay">
+            <th mat-header-cell
+                *matHeaderCellDef
+                mat-sort-header
+                sortActionDescription="{{'Sort by ' + column}}">{{ column == 'position' ? 'No.' : column }}</th>
+            <td mat-cell
+                *matCellDef="let element">{{ element[column] }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="expand">
+            <th mat-header-cell
+                *matHeaderCellDef
+                aria-label="row actions">&nbsp;</th>
+            <td mat-cell
+                *matCellDef="let element">
+                <button mat-icon-button
+                        type="button"
+                        aria-label="expand row"
+                        (click)="(expandedElement = expandedElement === element ? null : element); $event.stopPropagation()">
+                    <mat-icon *ngIf="expandedElement !== element">keyboard_arrow_down</mat-icon>
+                    <mat-icon *ngIf="expandedElement === element">keyboard_arrow_up</mat-icon>
+                </button>
+
+                <a mat-icon-button
+                   [routerLink]="[element.hash]"
+                   aria-label="icon button with a details icon"
+                   matTooltip="Detalhes"
+                   matTooltipPosition="above">
+                    <mat-icon>assignment</mat-icon>
+                </a>
+
+                <a mat-icon-button
+                   [routerLink]="[element.hash, 'edit']"
+                   aria-label="icon button with a edit icon"
+                   matTooltip="Editar"
+                   matTooltipPosition="above">
+                    <mat-icon>edit</mat-icon>
+                </a>
+
+                <a mat-icon-button
+                   color="warn"
+                   (click)="remove(element.hash); $event.stopPropagation()"
+                   matTooltip="Apagar"
+                   matTooltipPosition="above"
+                   aria-label="icon button with a cancel icon">
+                    <mat-icon>cancel</mat-icon>
+                </a>
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="expandedDetail">
+            <td mat-cell
+                *matCellDef="let element"
+                [attr.colspan]="columnsToDisplayWithExpand.length">
+                <div class="element-details"
+                     [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
+                    <div class="element-description">
+                        {{ element.description }}
+                    </div>
+                </div>
+            </td>
+        </ng-container>
+
+        <!-- Collumn Header -->
+        <tr mat-header-row
+            *matHeaderRowDef="columnsToDisplayWithExpand"></tr>
+
+        <!-- Collumn Values -->
+        <tr mat-row
+            *matRowDef="let element; columns: columnsToDisplayWithExpand;"
+            class="element-row"
+            [class.expanded-row]="expandedElement === element"
+            (click)="expandedElement = expandedElement === element ? null : element">
+        </tr>
+
+        <!-- Expandable Details -->
+        <tr mat-row
+            *matRowDef="let row; columns: ['expandedDetail']"
+            class="details-row"></tr>
+
+        <!-- No Table Data Notification -->
+        <tr *matNoDataRow>
+            <td class="info-message"
+                colspan="5">
+                Não existem itens listados para o filtro selecionado.
+            </td>
+        </tr>
+    </table>
+</ng-template>

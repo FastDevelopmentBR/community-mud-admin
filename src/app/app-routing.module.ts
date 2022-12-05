@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 
@@ -11,11 +11,17 @@ const routes: Routes = [
         path: 'dashboard',
         component: DashboardPageComponent,
     },
+    {
+        path: 'rooms',
+        loadChildren: () => import('./pages/rooms/rooms.module').then(m => m.RoomsModule)
+    },
     { path: '', redirectTo: '/login', pathMatch: 'full' },
 ];
 
 @NgModule({
-    imports: [RouterModule.forRoot(routes)],
+    imports: [
+        RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
+    ],
     exports: [RouterModule]
 })
 export class AppRoutingModule { }

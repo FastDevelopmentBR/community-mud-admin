@@ -1,0 +1,8 @@
+<commud-internal-page-template [pageTitle]="pageTitle"
+                               [showBackButton]="true">
+    <ng-container content>
+        <ng-container *ngIf="room">
+            <p>{{ room.description }}</p>
+        </ng-container>
+    </ng-container>
+</commud-internal-page-template>
