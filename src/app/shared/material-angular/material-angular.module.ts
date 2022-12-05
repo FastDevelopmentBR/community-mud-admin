@@ -30,6 +30,7 @@ import {
     MatSnackBarModule,
     MAT_SNACK_BAR_DEFAULT_OPTIONS,
 } from '@angular/material/snack-bar';
+import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
@@ -53,6 +54,7 @@ const materialAngularModules = [
     MatSelectModule,
     MatSlideToggleModule,
     MatSnackBarModule,
+    MatSortModule,
     MatTableModule,
     MatToolbarModule,
     MatTooltipModule,
@@ -69,7 +71,7 @@ const materialAngularModules = [
     providers: [
         {
             provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
-            useValue: { appearance: 'fill' },
+            useValue: { appearance: 'fill', subscriptSizing: 'dynamic' },
         },
         { provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: { duration: 2500 } },
         {

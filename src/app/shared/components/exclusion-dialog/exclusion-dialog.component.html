@@ -1,0 +1,14 @@
+<h2 mat-dialog-title>Tem certeza que deseja remover?</h2>
+
+<mat-dialog-content class="mat-typography">
+    <p>Essa ação é irreversível.</p>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+    <button mat-button
+            mat-dialog-close>Cancelar</button>
+    <button mat-button
+            color="warn"
+            [mat-dialog-close]="true"
+            cdkFocusInitial>Remover</button>
+</mat-dialog-actions>

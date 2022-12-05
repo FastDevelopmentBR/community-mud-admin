@@ -9,11 +9,13 @@ import { MaterialAngularModule } from './material-angular/material-angular.modul
 // Components
 import { ExternalPageTemplateComponent } from './templates/external-page-template/external-page-template.component';
 import { InternalPageTemplateComponent } from './templates/internal-page-template/internal-page-template.component';
+import { ExclusionDialogComponent } from './components/exclusion-dialog/exclusion-dialog.component';
 
 @NgModule({
     declarations: [
         ExternalPageTemplateComponent,
-        InternalPageTemplateComponent
+        InternalPageTemplateComponent,
+        ExclusionDialogComponent
     ],
     imports: [
         CommonModule,
