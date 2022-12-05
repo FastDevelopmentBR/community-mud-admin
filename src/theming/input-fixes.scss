@@ -2,6 +2,24 @@
     display: block !important;
 }
 
+// Input Search Clear Button Remove
+input[type="search"] {
+    &::-webkit-search-decoration,
+    &::-webkit-search-cancel-button,
+    &::-webkit-search-results-button,
+    &::-webkit-search-results-decoration {
+        -webkit-appearance: none;
+    }
+}
+
+// Microsoft Input Clear Button Remove
+input {
+    &::-ms-clear {
+        display: none;
+    }
+}
+
+// Autofill Webkit Fixes
 input,
 textarea,
 select {
