@@ -19,6 +19,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DashboardPageComponent } from './pages/dashboard-page/dashboard-page.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
+import { ForgotPasswordPageComponent } from './pages/forgot-password-page/forgot-password-page.component';
 
 @NgModule({
     declarations: [
@@ -26,6 +27,7 @@ import { LoginPageComponent } from './pages/login-page/login-page.component';
 
         DashboardPageComponent,
         LoginPageComponent,
+        ForgotPasswordPageComponent
     ],
     imports: [
         BrowserModule,
