@@ -25,6 +25,7 @@ import {
 } from '@angular/material/paginator';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
+import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import {
     MatSnackBarModule,
@@ -52,6 +53,7 @@ const materialAngularModules = [
     MatPaginatorModule,
     MatRadioModule,
     MatSelectModule,
+    MatSidenavModule,
     MatSlideToggleModule,
     MatSnackBarModule,
     MatSortModule,

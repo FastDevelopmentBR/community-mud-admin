@@ -23,6 +23,16 @@
     }
 }
 
+mat-sidenav-container {
+    height: calc(100% - 64px);
+}
+
 .content {
     padding: 20px;
+}
+
+@media (max-width: 599px) {
+    mat-sidenav-container {
+        height: calc(100% - 56px);
+    }
 }

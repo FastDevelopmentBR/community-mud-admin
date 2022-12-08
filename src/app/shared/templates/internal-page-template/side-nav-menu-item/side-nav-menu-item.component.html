@@ -1,0 +1,6 @@
+<mat-list-item *ngIf="link"
+               [routerLink]="link"
+               routerLinkActive="is-active">
+    <mat-icon matListItemIcon>{{ icon }}</mat-icon>
+    <a matListItemTitle>{{ text }}</a>
+</mat-list-item>

@@ -1,0 +1,20 @@
+// @use "@angular/material" as mat;
+
+mat-list-item {
+    padding-right: 24px;
+}
+
+mat-list-item a {
+    display: flex;
+    justify-content: space-between;
+    padding-right: 24px;
+}
+
+.is-active {
+    padding-right: 0;
+
+    ::after {
+        content: "\E315";
+        margin-right: -24px;
+    }
+}

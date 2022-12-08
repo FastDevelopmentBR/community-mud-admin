@@ -1,7 +1,8 @@
 <mat-toolbar color="primary">
     <button mat-icon-button
             class="menu-icon"
-            aria-label="icon-button with menu icon">
+            aria-label="icon-button with menu icon"
+            (click)="sidenav.toggle()">
         <mat-icon>menu</mat-icon>
     </button>
 
@@ -24,23 +25,31 @@
     </button>
 </mat-toolbar>
 
-<div class="container">
-    <div class="header-bar mat-elevation-z2">
-        <div class="title-w-backbtn">
-            <a mat-icon-button
-               color="primary"
-               [style.visibility]="(showBackButton) ? 'visible' : 'hidden'"
-               (click)="back()"
-               aria-label="icon button with a arrow back icon">
-                <mat-icon>arrow_back</mat-icon>
-            </a>
-            <h1 *ngIf="pageTitle">{{ pageTitle }}</h1>
+<mat-sidenav-container class="container">
+    <mat-sidenav #sidenav
+                 mode="over"
+                 class="sidenav">
+        <commud-side-nav-menu></commud-side-nav-menu>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+        <div class="header-bar mat-elevation-z2">
+            <div class="title-w-backbtn">
+                <a mat-icon-button
+                   color="primary"
+                   [style.visibility]="(showBackButton) ? 'visible' : 'hidden'"
+                   (click)="back()"
+                   aria-label="icon button with a arrow back icon">
+                    <mat-icon>arrow_back</mat-icon>
+                </a>
+                <h1 *ngIf="pageTitle">{{ pageTitle }}</h1>
+            </div>
+
+            <ng-content select="[header]"></ng-content>
         </div>
 
-        <ng-content select="[header]"></ng-content>
-    </div>
-
-    <div class="content scroll-y">
-        <ng-content select="[content]"></ng-content>
-    </div>
-</div>
+        <div class="content scroll-y">
+            <ng-content select="[content]"></ng-content>
+        </div>
+    </mat-sidenav-content>
+</mat-sidenav-container>
