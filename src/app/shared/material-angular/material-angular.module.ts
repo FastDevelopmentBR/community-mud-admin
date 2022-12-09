@@ -73,7 +73,7 @@ const materialAngularModules = [
     providers: [
         {
             provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
-            useValue: { appearance: 'fill', subscriptSizing: 'dynamic' },
+            useValue: { appearance: 'fill' },
         },
         { provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: { duration: 2500 } },
         {
