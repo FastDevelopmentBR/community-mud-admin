@@ -1,6 +1,70 @@
 <commud-internal-page-template [pageTitle]="(hash) ? 'Editar Sala' : 'Adicionar Sala'"
                                [showBackButton]="true">
     <ng-container content>
-        <p>form works!</p>
+        <form [formGroup]="form"
+              (submit)="onSubmit()">
+            <ng-container [ngTemplateOutlet]="basicInfoTemplate"></ng-container>
+
+            <div class="mdc-layout-grid">
+                <div class="mdc-layout-grid__inner">
+                    <div commud-md-layout-grid-cell
+                         class="action-btns">
+                        <button type="button"
+                                mat-raised-button
+                                color="warn"
+                                (click)="back()">
+                            Cancelar
+                        </button>
+
+                        <button type="submit"
+                                mat-raised-button
+                                color="primary">
+                            Enviar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
     </ng-container>
 </commud-internal-page-template>
+
+
+<ng-template #basicInfoTemplate>
+    <section>
+        <!-- <h2>Informações Básicas</h2> -->
+
+        <div [formGroup]="form"
+             class="mdc-layout-grid">
+            <div class="mdc-layout-grid__inner">
+                <div commud-md-layout-grid-cell
+                     [desktopSize]="6"
+                     [tabletSize]="8">
+                    <mat-form-field>
+                        <mat-label>Título</mat-label>
+                        <input matInput
+                               type="text"
+                               id="title"
+                               formControlName="title" />
+
+                        <mat-error *ngIf="hasError(form.controls['title'])">
+                            {{ getErrorMessage(form.controls["title"]) }}
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+
+                <div commud-md-layout-grid-cell>
+                    <mat-form-field>
+                        <mat-label>Descrição</mat-label>
+                        <textarea matInput
+                                  id="description"
+                                  formControlName="description"
+                                  rows="3"></textarea>
+                        <mat-error *ngIf="hasError(form.controls['description'])">
+                            {{ getErrorMessage(form.controls["description"]) }}
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+        </div>
+    </section>
+</ng-template>

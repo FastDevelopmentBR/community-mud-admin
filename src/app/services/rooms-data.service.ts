@@ -23,13 +23,11 @@ export class RoomsDataService {
     }
 
     add(data: Room): Observable<any> {
-        // return this.http.post(this.resourceURL, data, this.urlOptions())
         return this.http.post(this.resourceURL, data)
     }
 
     update(hash: string, data: Room): Observable<any> {
-        // return this.http.put(`${this.resourceURL}/${hash}`, data, this.urlOptions())
-        return this.http.put(`${this.resourceURL}/${hash}`, data)
+        return this.http.patch(`${this.resourceURL}/${hash}`, data)
     }
 
     delete(hash: string): Observable<any> {
