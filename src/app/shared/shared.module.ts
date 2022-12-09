@@ -13,6 +13,7 @@ import { InternalPageTemplateComponent } from './templates/internal-page-templat
 import { SideNavMenuComponent } from './templates/internal-page-template/side-nav-menu/side-nav-menu.component';
 import { SideNavMenuItemComponent } from './templates/internal-page-template/side-nav-menu-item/side-nav-menu-item.component';
 import { ExclusionDialogComponent } from './components/exclusion-dialog/exclusion-dialog.component';
+import { MdLayoutGridCellComponent } from './components/md-layout-grid-cell/md-layout-grid-cell.component';
 
 @NgModule({
     declarations: [
@@ -20,7 +21,8 @@ import { ExclusionDialogComponent } from './components/exclusion-dialog/exclusio
         InternalPageTemplateComponent,
         SideNavMenuComponent,
         SideNavMenuItemComponent,
-        ExclusionDialogComponent
+        ExclusionDialogComponent,
+        MdLayoutGridCellComponent
     ],
     imports: [
         CommonModule,
@@ -39,6 +41,7 @@ import { ExclusionDialogComponent } from './components/exclusion-dialog/exclusio
         ReactiveFormsModule,
 
         MaterialAngularModule,
+        MdLayoutGridCellComponent,
 
         ExternalPageTemplateComponent,
         InternalPageTemplateComponent
